@@ -1,0 +1,31 @@
+{
+  "name": "weather-app-2.0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.2",
+    "axios": "^1.4.0",
+    "react-scripts": "^5.0.1",
+    "react-select-async-paginate": "^0.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kallevo/Weather.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kallevo/Weather/issues"
+  },
+  "homepage": "https://github.com/kallevo/Weather#readme",
+  "description": ""
+}
