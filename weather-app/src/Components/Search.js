@@ -4,8 +4,11 @@ import {GEO_API_URL, geoApiOptions} from '../Api'
 import axios from "axios";
 
 const Search = ({onSearchChange}) => {
+    //Search box input state.
     const [search, setSearch] = useState('');
+    //Suggested city options.
     const [searchOptions, setSearchOptions] = useState([]);
+    //Set to true when requesting data from api.
     const [loading, setLoading] = useState(false)
 
     /*
@@ -20,7 +23,13 @@ const Search = ({onSearchChange}) => {
                     .then((response) => response.data.data)
                     .then((responseData) => {
                         const updatedOptions = responseData.map((c) => {
-                            return {id: c.id, name: c.name, region: c.region};
+                            return {
+                                id: c.id,
+                                name: c.name,
+                                region: c.region,
+                                latitude: c.latitude,
+                                longitude: c.longitude
+                            };
                         });
                         setSearchOptions(updatedOptions)
                     })
@@ -28,8 +37,7 @@ const Search = ({onSearchChange}) => {
             }, 1000)
             return () => clearTimeout(timeout)
         } catch (error) {
-
-            console.error(error);
+            console.error('Error occurred while searching for city names. Full error message: ' + error.message);
         }
     }, [search])
 
@@ -45,7 +53,7 @@ const Search = ({onSearchChange}) => {
     //Sends a prop containing the search field value to App.js when a location is selected in the search field.
     const handleOnOptionClick = (event, value) => {
         if (value !== undefined && value !== null) {
-            onSearchChange(value.name);
+            onSearchChange(value);
         }
     }
     return (
