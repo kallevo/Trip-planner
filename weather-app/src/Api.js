@@ -1,4 +1,3 @@
-
 export const geoApiOptions = {
     method: 'GET',
     headers: {
@@ -8,14 +7,14 @@ export const geoApiOptions = {
     }
 };
 
-export const geocodingApiOptions = {
+export const weatherApiOptions = {
     method: 'GET',
     params: {
-        'appid': process.env.REACT_APP_GEOCODING_API_KEY,
-        'limit': '1'
+        'appid': process.env.REACT_APP_WEATHER_API_KEY,
+        'units': 'metric'
     }
 }
 
 export const GEO_API_URL = 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities'
 
-export const GEOCODING_API_URL = 'https://api.openweathermap.org/geo/1.0/direct?'
+export const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather'
