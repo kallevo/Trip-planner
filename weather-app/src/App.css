@@ -1,10 +1,13 @@
-.Search {
-    margin-top: 5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.App {
+    margin:20px auto;
 }
 
-.Searchbar {
-    width: 40%;
+.Search {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.WeatherDisplay {
+    margin: auto;
+    width: fit-content;
 }

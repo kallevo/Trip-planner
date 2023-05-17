@@ -9,7 +9,7 @@ const Search = ({onSearchChange}) => {
     //Suggested city options.
     const [searchOptions, setSearchOptions] = useState([]);
     //Set to true when requesting data from api.
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     /*
     Sends an api call to search for cities containing the characters that are in the search field.
@@ -19,7 +19,7 @@ const Search = ({onSearchChange}) => {
         setLoading(true)
         try {
             const timeout = setTimeout(() => {
-                axios(`${GEO_API_URL}?minPopulation=100000&namePrefix=${search}`, geoApiOptions)
+                axios(`${GEO_API_URL}?namePrefix=${search}`, geoApiOptions)
                     .then((response) => response.data.data)
                     .then((responseData) => {
                         const updatedOptions = responseData.map((c) => {
@@ -27,11 +27,12 @@ const Search = ({onSearchChange}) => {
                                 id: c.id,
                                 name: c.name,
                                 region: c.region,
+                                country: c.country,
                                 latitude: c.latitude,
                                 longitude: c.longitude
                             };
                         });
-                        setSearchOptions(updatedOptions)
+                        setSearchOptions(updatedOptions);
                     })
                 setLoading(false)
             }, 1000)
@@ -44,7 +45,7 @@ const Search = ({onSearchChange}) => {
     //Called when input in search field changes.
     const handleOnInputChange = (event, value) => {
         if (value === undefined) {
-            setSearch("")
+            setSearch("");
         } else {
             setSearch(value);
         }
@@ -62,23 +63,23 @@ const Search = ({onSearchChange}) => {
             className={"Searchbar"}
             inputValue={search}
             options={searchOptions}
-            getOptionLabel={(option) => `${option.name}, ${option.region}`}
+            getOptionLabel={(option) => `${option.name}, ${option.region}, ${option.country}`}
             renderOption={(props, option) => {
                 return (
                     <li {...props} key={option.id}>
-                        {option.name}, {option.region}
+                        {option.name}, {option.region}, {option.country}
                     </li>
                 );
             }}
             renderInput={(params) => (
                 <TextField {...params}
-                           label="Search for a city..."
+                           label="Search for a city"
                            fullWidth
                            InputProps={{
                                ...params.InputProps,
                                endAdornment: (
                                    <React.Fragment>
-                                       {loading ? <CircularProgress color="inherit" size={20}/> : null}
+                                       {loading ? <CircularProgress color="inherit" size={20}/> : false}
                                        {params.InputProps.endAdornment}
                                    </React.Fragment>
                                ),

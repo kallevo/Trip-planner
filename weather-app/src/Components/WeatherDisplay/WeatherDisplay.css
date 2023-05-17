@@ -1,0 +1,25 @@
+.weather-icon-and-current-temp {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(25,42,81, 0.9);
+    border-radius: 60px;
+}
+
+.weather-icon {
+    width: 150%;
+    max-width: 400px;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.city-name {
+    width: auto;
+    text-align: center;
+}
+
+.current-temp {
+    font-size: 100px;
+    color: white;
+    margin-right: 80px;
+}
