@@ -2,24 +2,52 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    background-color: rgba(25,42,81, 0.9);
+    background-color: rgba(25,42,81);
     border-radius: 60px;
+    max-height: 300px;
+    max-width: fit-content;
+    margin: auto;
 }
 
 .weather-icon {
     width: 150%;
     max-width: 400px;
-    margin-right: 50px;
     margin-left: 30px;
 }
 
 .city-name {
     width: auto;
     text-align: center;
+    color: white;
 }
 
 .current-temp {
     font-size: 100px;
     color: white;
     margin-right: 80px;
+}
+
+.current-weather {
+    display: grid;
+    grid-template-areas:
+        'feels-like-h     wind-speed-h      visibility-h      humidity-h        low-temp-h       high-temp-h'
+        'feels-like       wind-speed        visibility        humidity          low-temp         high-temp';
+    gap: 0 50px;
+    max-width: 90%;
+    margin: 20px auto 20px auto;
+    padding: 20px 20px 20px 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(25,42,81);
+    border-radius: 60px;
+}
+
+.weather-stats {
+    color: white;
+}
+
+.weather-stat-numbers {
+    color: white;
+    font-size: 20px;
 }
