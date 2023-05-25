@@ -1,6 +1,7 @@
 body {
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .App {
