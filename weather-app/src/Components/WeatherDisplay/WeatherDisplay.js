@@ -1,6 +1,6 @@
 import './WeatherDisplay.css'
 
-const WeatherDisplay = ({currentWeatherInfo, cityName}) => {
+const WeatherDisplay = ({currentWeatherInfo, cityName, forecast}) => {
     //Finds the correct weather icon using data given by App.js as a prop.
     const findWeatherIcon = () => {
         try {
@@ -21,6 +21,8 @@ const WeatherDisplay = ({currentWeatherInfo, cityName}) => {
                 <p className={'current-temp'}>{Math.round(currentWeatherInfo.main.temp)}°C</p>
             </div>
             <div className={'current-weather'}>
+                <h2>Current Weather</h2>
+
                 <h3 className={'weather-stats'}>Feels like</h3>
                 <h3 className={'weather-stats'}>Wind speed</h3>
                 <h3 className={'weather-stats'}>Visibility</h3>
@@ -34,6 +36,9 @@ const WeatherDisplay = ({currentWeatherInfo, cityName}) => {
                 <p className={'weather-stat-numbers'}>{currentWeatherInfo.main.humidity} %</p>
                 <p className={'weather-stat-numbers'}>{Math.round(currentWeatherInfo.main.temp_min)} °C</p>
                 <p className={'weather-stat-numbers'}>{Math.round(currentWeatherInfo.main.temp_max)} °C</p>
+            </div>
+            <div className={'forecast'}>
+
             </div>
         </>
     );
