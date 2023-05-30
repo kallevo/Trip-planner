@@ -3,11 +3,13 @@ import Search from "./Components/Search";
 import WeatherDisplay from "./Components/WeatherDisplay/WeatherDisplay";
 import {useState} from "react";
 import axios from "axios";
-import {WEATHER_API_URL, weatherApiOptions} from "./Api";
+import {CURRENT_WEATHER_API_URL, WEATHER_FORECAST_API_URL, weatherApiOptions} from "./Api";
 
 function App() {
     //Contains current weather data from OpenWeatherMap api
     const [currentWeatherData, setCurrentWeatherData] = useState('');
+    //Contains forecast weather data from OpenWeatherMap api
+    const [forecastWeatherData, setForecastWeatherData] = useState('');
     const [cityName, setCityName] = useState('');
     const backgroundImages = new Map ([
         ['Atmosphere',`url(${process.env.PUBLIC_URL}/Weather-state-images/atmosphere.jpg)`],
@@ -16,22 +18,13 @@ function App() {
         ['Drizzle', `url(${process.env.PUBLIC_URL}/Weather-state-images/drizzle.jpg)`],
         ['Rain', `url(${process.env.PUBLIC_URL}/Weather-state-images/rain.jpg)`],
         ['Snow', `url(${process.env.PUBLIC_URL}/Weather-state-images/snow.jpg)`],
-        ['Thunder', `url(${process.env.PUBLIC_URL}/Weather-state-images/thunder.jpg)`]
+        ['Thunderstorm', `url(${process.env.PUBLIC_URL}/Weather-state-images/thunder.jpg)`]
     ]);
 
-    //Requests weather data from OpenWeatherMap api
+    //A function for handling search from Search.js
     const handleOnSearchChange = (locationInfo) => {
-        try {
-            setCityName(locationInfo.name);
-            axios(`${WEATHER_API_URL}?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}`, weatherApiOptions)
-                .then((response) => {
-                    setCurrentWeatherData(response.data);
-                    setBackgroundImage(response.data.weather[0].main, response.data.weather[0].id);
-                    console.log(response.data);
-                })
-        } catch (e) {
-            console.error('Weather data not found. Full error message: ' + e.message);
-        }
+        searchCurrentWeather(locationInfo);
+        searchForecast(locationInfo);
     }
 
     //Sets the background image depending on the weather type that is passed as a parameter
@@ -46,13 +39,41 @@ function App() {
         console.log(document.body.style.backgroundImage);
     }
 
+    //Requests current weather data from OpenWeatherMap api and sets background image
+    const searchCurrentWeather = (locationInfo) => {
+        try {
+            setCityName(locationInfo.name);
+            axios(`${CURRENT_WEATHER_API_URL}?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}`, weatherApiOptions)
+                .then((response) => {
+                    setCurrentWeatherData(response.data);
+                    setBackgroundImage(response.data.weather[0].main, response.data.weather[0].id);
+                    console.log(response.data);
+                })
+        } catch (e) {
+            console.error('Weather data not found. Full error message: ' + e.message);
+        }
+    }
+
+    const searchForecast = (locationInfo) => {
+        try {
+            setCityName(locationInfo.name);
+            axios(`${WEATHER_FORECAST_API_URL}?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}`, weatherApiOptions)
+                .then((response) => {
+                    setForecastWeatherData(response.data.list);
+                    console.log(response.data.list);
+                })
+        } catch (e) {
+            console.error('Weather data not found. Full error message: ' + e.message);
+        }
+    }
+
     return (
         <div className='App'>
             <div className='Search'>
                 <Search onSearchChange={handleOnSearchChange}/>
             </div>
             <div className='WeatherDisplay'>
-                {currentWeatherData !== '' && <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName}/>}
+                {currentWeatherData !== '' && <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName} forecast={forecastWeatherData}/>}
             </div>
         </div>
     );
