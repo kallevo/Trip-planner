@@ -19,6 +19,7 @@
     width: auto;
     text-align: center;
     color: white;
+    font-size: 50px;
 }
 
 .current-temp {
@@ -27,16 +28,16 @@
     margin-right: 80px;
 }
 
-.current-weather {
+.weather-grid {
     display: grid;
     grid-template-areas:
         'heading heading heading heading heading heading'
         'feels-like-h     wind-speed-h      visibility-h      humidity-h        low-temp-h       high-temp-h'
         'feels-like       wind-speed        visibility        humidity          low-temp         high-temp';
-    gap: 0 50px;
+    gap: 0 40px;
     max-width: 90%;
-    margin: 20px auto 20px auto;
-    padding: 20px 20px 20px 20px;
+    margin: 20px 20px 20px 20px;
+    padding: 20px 30px 20px 20px;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -44,9 +45,10 @@
     border-radius: 60px;
 }
 
-.current-weather h2 {
+.weather-grid h2 {
     grid-area: heading;
     color: white;
+    font-size: 25px;
 }
 
 .weather-stats {
@@ -56,10 +58,4 @@
 .weather-stat-numbers {
     color: white;
     font-size: 20px;
-}
-
-.forecast {
-    display: grid;
-    grid-template-areas:
-        '';
 }

@@ -59,7 +59,7 @@ function App() {
             setCityName(locationInfo.name);
             axios(`${WEATHER_FORECAST_API_URL}?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}`, weatherApiOptions)
                 .then((response) => {
-                    setForecastWeatherData(response.data);
+                    setForecastWeatherData(response.data.list);
                     console.log(response.data.list);
                 })
         } catch (e) {
@@ -73,7 +73,7 @@ function App() {
                 <Search onSearchChange={handleOnSearchChange}/>
             </div>
             <div className='WeatherDisplay'>
-                {currentWeatherData !== '' && <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName}/>}
+                {currentWeatherData !== '' && <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName} forecast={forecastWeatherData}/>}
             </div>
         </div>
     );
