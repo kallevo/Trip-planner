@@ -10,8 +10,8 @@
 }
 
 .weather-icon {
-    width: 150%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 350px;
     margin-left: 30px;
 }
 
@@ -32,12 +32,11 @@
     display: grid;
     grid-template-areas:
         'heading heading heading heading heading heading'
-        'feels-like-h     wind-speed-h      visibility-h      humidity-h        low-temp-h       high-temp-h'
-        'feels-like       wind-speed        visibility        humidity          low-temp         high-temp';
-    gap: 0 40px;
+        'item1     item2      item3      item4        item5       item6';
+    gap: 0 15px;
     max-width: 90%;
     margin: 20px 20px 20px 20px;
-    padding: 20px 30px 20px 20px;
+    padding: 0 30px 15px 30px;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -51,6 +50,12 @@
     font-size: 25px;
 }
 
+.weather-item {
+    padding: 0 15px 0 15px;
+    background-color: rgba(10, 34, 57);
+    border-radius: 20px;
+
+}
 .weather-stats {
     color: white;
 }
