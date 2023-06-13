@@ -55,6 +55,7 @@ function App() {
         }
     }
 
+    //Requests weather forecast data from OpenWeatherMap api
     const searchForecast = (locationInfo) => {
         try {
             setCityName(locationInfo.name);

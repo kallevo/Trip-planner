@@ -2,11 +2,13 @@ import './WeatherDisplay.css'
 import {motion} from 'framer-motion';
 
 const WeatherDisplay = ({currentWeatherInfo, cityName, forecast}) => {
+    //Rules for animation
     const container = {
         visible: { opacity: 1, transition: { staggerChildren: 0.2, staggerDirection: 1 }},
         hidden: {opacity: 0}
     }
 
+    //Rules for animation
     const item = {
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 20 }
