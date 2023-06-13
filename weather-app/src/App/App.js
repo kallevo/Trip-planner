@@ -1,18 +1,22 @@
 import './App.css';
-import Search from "./Components/Search";
-import WeatherDisplay from "./Components/WeatherDisplay/WeatherDisplay";
+import Search from "../Components/Search";
+import WeatherDisplay from "../Components/WeatherDisplay/WeatherDisplay";
 import {useState} from "react";
 import axios from "axios";
-import {CURRENT_WEATHER_API_URL, WEATHER_FORECAST_API_URL, weatherApiOptions} from "./Api";
+import {CURRENT_WEATHER_API_URL, WEATHER_FORECAST_API_URL, weatherApiOptions} from "../Api";
 
 function App() {
     //Contains current weather data from OpenWeatherMap api
     const [currentWeatherData, setCurrentWeatherData] = useState('');
+
     //Contains forecast weather data from OpenWeatherMap api
     const [forecastWeatherData, setForecastWeatherData] = useState('');
+
     const [cityName, setCityName] = useState('');
-    const backgroundImages = new Map ([
-        ['Atmosphere',`url(${process.env.PUBLIC_URL}/Weather-state-images/atmosphere.jpg)`],
+
+    //Background image file paths
+    const backgroundImages = new Map([
+        ['Atmosphere', `url(${process.env.PUBLIC_URL}/Weather-state-images/atmosphere.jpg)`],
         ['Clear', `url(${process.env.PUBLIC_URL}/Weather-state-images/clear.jpg)`],
         ['Clouds', `url(${process.env.PUBLIC_URL}/Weather-state-images/clouds.jpg)`],
         ['Drizzle', `url(${process.env.PUBLIC_URL}/Weather-state-images/drizzle.jpg)`],
@@ -33,10 +37,7 @@ function App() {
         if (id > 700 || id < 782) {
             document.body.style.backgroundImage = backgroundImages.get('Atmosphere');
         }
-        console.log(weather)
-        console.log(backgroundImages.get(weather))
         document.body.style.backgroundImage = backgroundImages.get(weather);
-        console.log(document.body.style.backgroundImage);
     }
 
     //Requests current weather data from OpenWeatherMap api and sets background image
@@ -68,14 +69,18 @@ function App() {
     }
 
     return (
-        <div className='App'>
-            <div className='Search'>
-                <Search onSearchChange={handleOnSearchChange}/>
+
+            <div className='App'>
+                <div className='Search'>
+                    <Search onSearchChange={handleOnSearchChange}/>
+                </div>
+                <div className='WeatherDisplay'>
+                    {currentWeatherData !== '' &&
+                        <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName}
+                                        forecast={forecastWeatherData}/>}
+                </div>
             </div>
-            <div className='WeatherDisplay'>
-                {currentWeatherData !== '' && <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName} forecast={forecastWeatherData}/>}
-            </div>
-        </div>
+
     );
 }
 
