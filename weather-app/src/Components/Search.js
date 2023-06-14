@@ -72,7 +72,7 @@ const Search = ({onSearchChange}) => {
                 );
             }}
             renderInput={(params) => (
-                <TextField className={'search-box'} {...params}
+                <TextField {...params}
                            label="Search for a city"
                            fullWidth
                            InputProps={{
