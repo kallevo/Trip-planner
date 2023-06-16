@@ -3,29 +3,31 @@
     display: flex;
     justify-content: center;
     background-color: rgba(25, 42, 81);
-    border-radius: 60px;
-    max-height: 300px;
-    max-width: fit-content;
+    border-radius: 5vw;
+    width: 70%;
+    height: 100%;
+    max-width: 900px;
     margin: auto;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .weather-icon {
-    width: 100%;
+    width: 70%;
     max-width: 350px;
-    margin-left: 30px;
 }
 
 .city-name {
     width: auto;
     text-align: center;
     color: white;
-    font-size: 50px;
+    font-size: 6vw;
 }
 
 .current-temp {
-    font-size: 100px;
+    font-size: 8vw;
     color: white;
-    margin-right: 80px;
+    margin-right: 1em;
 }
 
 .weather-grid {
@@ -33,10 +35,10 @@
     grid-template-areas:
         'heading heading heading heading heading heading'
         'item1     item2      item3      item4        item5       item6';
-    gap: 0 15px;
-    max-width: 90%;
-    margin: 20px 20px 20px 20px;
-    padding: 0 30px 15px 30px;
+    gap: 15px 15px;
+    margin: 20px 15px 20px 15px;
+    padding: 20px 20px 20px 20px;
+    min-width: 200px;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -47,20 +49,60 @@
 .weather-grid h2 {
     grid-area: heading;
     color: white;
-    font-size: 25px;
+    font-size: 4vw;
 }
 
 .weather-item {
     padding: 0 15px 0 15px;
     background-color: rgba(10, 34, 57);
     border-radius: 20px;
-
 }
 .weather-stats {
     color: white;
+    font-size: 4vw;
 }
 
 .weather-stat-numbers {
     color: white;
-    font-size: 20px;
+    font-size: 3vw;
+}
+
+@media (min-width: 905px) {
+    .city-name {
+        font-size: 50px;
+    }
+
+    .current-temp {
+        font-size: 60px;
+    }
+
+    .weather-icon-and-current-temp {
+        max-height: 300px;
+    }
+
+    .weather-grid h2 {
+        font-size: 30px;
+    }
+
+    .weather-item {
+        max-width: 150px;
+    }
+
+    .weather-stats {
+        font-size: 25px;
+    }
+
+    .weather-stat-numbers {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 905px) {
+    .weather-grid {
+        grid-template-areas:
+        'heading heading heading'
+        'item1     item2      item3'
+        'item4     item5      item6';
+    }
+
 }

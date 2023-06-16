@@ -1,11 +1,14 @@
 body {
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
 }
 
+
 .App {
-    margin: 20px 20px 20px 20px;
+    margin: 2em 2em 2em 2em;
 }
 
 .Search {
@@ -14,11 +17,22 @@ body {
 }
 
 .WeatherDisplay {
-    padding-top: 5px;
-    padding-bottom: 15px;
-    display: block;
-    margin: 20px auto;
-    max-width: fit-content;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin: 2em auto;
+    width: auto;
     background-color: rgba(94, 80, 250, 0.9);
-    border-radius: 60px;
+    border-radius: 30px;
+    max-width: 1000px;
+}
+
+@media (max-width: 905px) {
+    .App {
+        margin: 1em 1em 1em 1em;
+    }
+
+    .Search {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }
