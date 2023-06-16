@@ -9,6 +9,7 @@ body {
 
 .App {
     margin: 2em 2em 2em 2em;
+
 }
 
 .Search {
@@ -16,7 +17,9 @@ body {
     margin-right: 30%;
 }
 
-.WeatherDisplay {
+#WeatherDisplay {
+    display:none;
+    box-sizing: border-box;
     padding-top: 2px;
     padding-bottom: 2px;
     margin: 2em auto;
@@ -25,6 +28,8 @@ body {
     border-radius: 30px;
     max-width: 1000px;
 }
+
+
 
 @media (max-width: 905px) {
     .App {

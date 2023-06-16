@@ -75,7 +75,7 @@ function App() {
                 <div className='Search'>
                     <Search onSearchChange={handleOnSearchChange}/>
                 </div>
-                <div className='WeatherDisplay'>
+                <div id='WeatherDisplay'>
                     {currentWeatherData !== '' &&
                         <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName}
                                         forecast={forecastWeatherData}/>}
