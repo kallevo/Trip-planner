@@ -18,7 +18,7 @@ body {
 }
 
 #WeatherDisplay {
-    display:none;
+    display: none;
     box-sizing: border-box;
     padding-top: 2px;
     padding-bottom: 2px;
