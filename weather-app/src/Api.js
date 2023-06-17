@@ -4,6 +4,9 @@ export const geoApiOptions = {
         'content-type': 'application/octet-stream',
         'X-RapidAPI-Key': process.env.REACT_APP_CITIES_API_KEY,
         'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+    },
+    params: {
+        sort: '-population'
     }
 };
 
