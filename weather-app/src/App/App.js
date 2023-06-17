@@ -1,7 +1,7 @@
 import './App.css';
 import Search from "../Components/Search";
 import WeatherDisplay from "../Components/WeatherDisplay/WeatherDisplay";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {CURRENT_WEATHER_API_URL, WEATHER_FORECAST_API_URL, weatherApiOptions} from "../Api";
 
@@ -31,6 +31,10 @@ function App() {
         searchForecast(locationInfo);
     }
 
+    useEffect(() => {
+        document.body.style.backgroundImage = backgroundImages.get('Atmosphere');
+        console.log('called')
+    },[])
     //Sets the background image depending on the weather type that is passed as a parameter
     const setBackgroundImage = (weather, id) => {
         document.body.style.backgroundImage = backgroundImages.get('Clouds');
@@ -75,11 +79,11 @@ function App() {
                 <div className='Search'>
                     <Search onSearchChange={handleOnSearchChange}/>
                 </div>
-                <div id='WeatherDisplay'>
-                    {currentWeatherData !== '' &&
+                {currentWeatherData !== '' && <div id='WeatherDisplay'>
+                    {
                         <WeatherDisplay currentWeatherInfo={currentWeatherData} cityName={cityName}
                                         forecast={forecastWeatherData}/>}
-                </div>
+                </div>}
             </div>
 
     );

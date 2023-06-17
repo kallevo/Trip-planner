@@ -54,7 +54,6 @@ const Search = ({onSearchChange}) => {
     //Sends a prop containing the search field value to App.js when a location is selected in the search field.
     const handleOnOptionClick = (event, value) => {
         if (value !== undefined && value !== null) {
-            document.getElementById('WeatherDisplay').style.display = 'block';
             onSearchChange(value);
         }
     }
@@ -90,6 +89,8 @@ const Search = ({onSearchChange}) => {
             onInputChange={handleOnInputChange}
             onChange={handleOnOptionClick}
             loading={loading}
+            autoComplete={true}
+            autoHighlight={true}
         />
     )
 }
