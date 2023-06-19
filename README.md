@@ -1,3 +1,7 @@
+# Weather
+
+This is a weather app built with React that lets you search for any city in the world and see the current and forecasted weather conditions. You can also see some additional information about the weather, such as the feels like temperature, wind speed, visibility, humidity, and the lowest and highest temperature for the day.
+
 ## Features
 
 - Search for a city by name
