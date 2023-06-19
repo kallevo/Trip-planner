@@ -31,10 +31,11 @@ function App() {
         searchForecast(locationInfo);
     }
 
+    //Sets the background image on first render of the webpage
     useEffect(() => {
         document.body.style.backgroundImage = backgroundImages.get('Atmosphere');
-        console.log('called')
     },[])
+
     //Sets the background image depending on the weather type that is passed as a parameter
     const setBackgroundImage = (weather, id) => {
         document.body.style.backgroundImage = backgroundImages.get('Clouds');
@@ -52,7 +53,6 @@ function App() {
                 .then((response) => {
                     setCurrentWeatherData(response.data);
                     setBackgroundImage(response.data.weather[0].main, response.data.weather[0].id);
-                    console.log(response.data);
                 })
         } catch (e) {
             console.error('Weather data not found. Full error message: ' + e.message);
@@ -66,7 +66,6 @@ function App() {
             axios(`${WEATHER_FORECAST_API_URL}?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}`, weatherApiOptions)
                 .then((response) => {
                     setForecastWeatherData(response.data.list);
-                    console.log(response.data.list);
                 })
         } catch (e) {
             console.error('Weather data not found. Full error message: ' + e.message);

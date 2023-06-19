@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {Skeleton} from "@mui/material";
 
 const WeatherDisplay = ({currentWeatherInfo, cityName, forecast}) => {
+    //True if weather information is in loading state
     const [loading, setLoading] = useState(true);
 
     //Rules for animation
@@ -28,6 +29,10 @@ const WeatherDisplay = ({currentWeatherInfo, cityName, forecast}) => {
         return null;
     }
 
+    /*
+    Turns on a brief loading state when new weather data has been received from App.js.
+    This gives time for the data and weather icon to load.
+     */
     useEffect(() => {
         setLoading(true)
         setTimeout(() => {
